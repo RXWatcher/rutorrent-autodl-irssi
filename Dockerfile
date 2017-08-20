@@ -158,5 +158,5 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
 COPY root/ /
 
 # ports and volumes
-EXPOSE 443
+EXPOSE 80 443
 VOLUME /config /downloads
