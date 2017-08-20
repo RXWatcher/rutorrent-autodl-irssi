@@ -152,11 +152,15 @@ wget -qO- https://github.com/rakshasa/rtorrent/archive/${RTORRENT_VER}.tar.gz | 
  apk del --purge \
         build-dependencies && \
  rm -rf \
-        /tmp/*
+	/etc/nginx/conf.d/default.conf \
+	/tmp/* && \
+
+# fix logrotate
+ sed -i "s#/var/log/messages {}.*# #g" /etc/logrotate.conf
 
 # add local files
 COPY root/ /
 
 # ports and volumes
-EXPOSE 80 443
+EXPOSE 80
 VOLUME /config /downloads
